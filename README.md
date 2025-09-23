@@ -81,17 +81,45 @@ git clone https://github.com/Guillermo-David/generador_informes_backend.git
 git clone https://github.com/Guillermo-David/generador_informes_frontend.git
 ```
 ---
+
 2. Construye los proyectos con Maven:
 ```bash
 mvn clean install
 ```
 ---
-3. Ejecuta el backend:
+3. Crea las tablas del batch:
+    > Spring Batch necesita unas tablas específicas para almacenar el estado de los jobs y steps. Estas tablas se pueden crear automáticamente ejecutando los scripts SQL que proporciona Spring.
+
+    1. Obtén el SQL automáticamente
+        * Localiza el archivo SQL correspondiente a tu base de datos en el paquete de Spring Batch.
+        * La ruta será la siguiente: C:\Users\\<TU_USUARIO>\\.m2\repository\org\springframework\batch\spring-batch-core\5.2.3\spring-batch-core-5.2.3.jar
+        * Abre el archivo JAR con algún compresor de archivos (Como Winrar, o cualquier otro)
+
+            - Por ejemplo, para **PostgreSQL**, el script está en:
+              ```
+              org/springframework/batch/core/schema-postgresql.sql
+              ```
+            - Para **H2** (para tests locales):
+              ```
+              org/springframework/batch/core/schema-h2.sql
+              ```
+        * Puedes encontrar estos scripts en la carpeta `resources` del jar de Spring Batch o en su [repositorio oficial](https://github.com/spring-projects/spring-batch/tree/main/spring-batch-core/src/main/resources/org/springframework/batch/core).
+    2. Ejecuta el SQL en tu base de datos
+        1. Abre tu cliente de base de datos (psql para PostgreSQL, H2 Console, DBeaver, etc.)
+        2. Ejecuta el contenido del script SQL para crear las tablas.
+        3. Comprueba que las tablas se han creado correctamente, por ejemplo:
+            - `BATCH_JOB_INSTANCE`
+            - `BATCH_JOB_EXECUTION`
+            - `BATCH_STEP_EXECUTION`
+            - `BATCH_JOB_EXECUTION_PARAMS`
+            - ...
+---
+4. Ejecuta el backend:
 ```bash
 mvn spring-boot:run
 ```
 ---
-4. Ejecuta el frontend:
+5. Ejecuta el frontend:
 ```bash
 mvn clean javafx:run
 ```
