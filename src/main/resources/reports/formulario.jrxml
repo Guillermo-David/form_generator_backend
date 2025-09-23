@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                        http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="Formulario" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abcd1234-5678-90ab-cdef-1234567890ab">
+
+    <parameter name="nombre" class="java.lang.String"/>
+    <parameter name="email" class="java.lang.String"/>
+    <parameter name="comentario" class="java.lang.String"/>
+    <parameter name="logoPath" class="java.lang.String"/>
+
+    <title>
+        <band height="90">
+
+            <image>
+                <reportElement x="0" y="0" width="60" height="60"/>
+                <imageExpression><![CDATA[getClass().getResource("/img/logo.png").getPath()]]></imageExpression>
+            </image>
+
+            <staticText>
+                <reportElement x="40" y="0" width="455" height="30"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Formulario de Solicitud]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="0" y="85" width="555" height="1"/>
+            </line>
+
+            <textField>
+                <reportElement x="0" y="70" width="555" height="15"/>
+                <textElement textAlignment="Right">
+                    <font size="10" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Generado el: " + new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </title>
+
+    <detail>
+        <band height="120">
+
+            <staticText>
+                <reportElement x="0" y="0" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nombre:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="110" y="0" width="445" height="20"/>
+                <textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="25" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Email:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="110" y="25" width="445" height="20"/>
+                <textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="50" width="100" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Comentario:]]></text>
+            </staticText>
+            <textField isStretchWithOverflow="true">
+                <reportElement x="110" y="50" width="445" height="60"/>
+                <textElement verticalAlignment="Top"/>
+                <textFieldExpression><![CDATA[$P{comentario}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+</jasperReport>
