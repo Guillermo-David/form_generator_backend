@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/127d946f-4042-4ff5-b7ee-1ca181117e8d" alt="Logo" width="150"/>
+  <img src="https://github.com/user-attachments/assets/f86d4e14-c8cc-4659-b1f5-0c551941902b" alt="Logo" width="150"/>
 </p>
 
 # Backend - Generador de Informes
